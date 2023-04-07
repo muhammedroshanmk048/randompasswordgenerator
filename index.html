@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Password Generator</title>
+    <style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+        h1 {
+		text-align: center;
+		margin-top: 50px;
+		color: #333;
+	}
+
+	form {
+		width: 50%;
+		margin: 0 auto;
+		padding: 20px;
+		background-color: #fff;
+		border: 2px solid #ddd;
+		border-radius: 10px;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 10px;
+		color: #666;
+	}
+
+	input[type=number] {
+		padding: 10px;
+		border: 2px solid #ddd;
+		border-radius: 5px;
+		font-size: 16px;
+		color: #333;
+		margin-bottom: 20px;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	input[type=submit] {
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 5px;
+		font-size: 16px;
+		cursor: pointer;
+		margin-top: 20px;
+	}
+
+	input[type=submit]:hover {
+		background-color: #0062cc;
+	}
+
+	p {
+		font-size: 20px;
+		margin-top: 30px;
+		text-align: center;
+		color: #666;
+	}
+</style>
+
+</head>
+<body>
+	<h1>Random Password Generator</h1>
+	<form method="POST" action="{{ url_for('generate_password') }}">
+		<label for="length">Password Length:</label>
+		<input type="number" id="length" name="length" required><br><br>
+		<label for="num_special_chars">Number of Special Characters:</label>
+		<input type="number" id="num_special_chars" name="num_special_chars" required><br><br>
+		<label for="num_numbers">Number of Numbers:</label>
+		<input type="number" id="num_numbers" name="num_numbers" required><br><br>
+		<input type="submit" value="Generate Password">
+	</form>
+	{% if password %}
+		<p>Your Generated Password: {{ password }}</p>
+	{% endif %}
+</body>
+</html>
